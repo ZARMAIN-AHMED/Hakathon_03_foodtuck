@@ -69,6 +69,7 @@ function Hero() {
               src="/Image.png"
               height={600}
               width={800}
+              priority
             />
           </motion.div>
         </div>

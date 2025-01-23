@@ -28,7 +28,7 @@ const Testimonial = () => {
             className="object-cover rounded-md"
             alt="Our Menu"
             height={900}
-            width={1300}
+            width={1000}
           />
         </motion.div>
         <motion.div
@@ -68,13 +68,13 @@ const Testimonial = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="bg-white shadow-lg rounded-lg overflow-hidden"
             >
-              <Image
-                src={card.image}
-                className="w-full  sm:h-68 lg:h-full object-cover"
-                alt="Chef Card"
-                height={900}
-                width={400}
-              />
+           <Image
+  src={card.image}
+  alt="Chef Card"
+  className="object-cover"
+  height={900}
+  width={400}
+/>
             </motion.div>
           ))}
         </motion.div>

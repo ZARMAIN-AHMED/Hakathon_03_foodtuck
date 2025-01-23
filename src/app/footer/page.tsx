@@ -3,16 +3,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { createClient } from '@sanity/client';
 
-// Sanity client configuration
-const client = createClient({
-  projectId: '0av6w099', // Replace with your Sanity project ID
-  dataset: 'your_dataset', // Replace with your dataset name
-  useCdn: false, // Disable CDN for write operations
-  apiVersion: '2023-01-01', // Use the current date or your preferred API version
-  token: "sk96Ik8tGBEXFlheeN5sUk2AwhiNszJoTfYJqWpK7gDvYjx8IvWRQ482g96MZluOfFzTyCjWC2QTo98Zou8wnsGgXVoo1r6RFgf2WE3l3q3nt2WNsR2IkqM292V0cmp8g4clWxhD6NNi8BbSc5FvqhVzSp6V1Iv5r2GwbeU7pB1Ywj2c2NJB", // Replace with your Sanity API token
-});
+import { client } from '@/sanity/lib/client';
 
 export default function Footer() {
   const [email, setEmail] = useState('');
