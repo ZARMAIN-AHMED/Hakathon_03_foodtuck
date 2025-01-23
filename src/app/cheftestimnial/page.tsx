@@ -68,13 +68,15 @@ const Testimonial = () => {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="bg-white shadow-lg rounded-lg overflow-hidden"
             >
-           <Image
+          
+<Image
   src={card.image}
   alt="Chef Card"
-  className="object-cover"
+  className="object-cover w-full h-auto lg:h-full"
   height={900}
   width={400}
 />
+
             </motion.div>
           ))}
         </motion.div>
