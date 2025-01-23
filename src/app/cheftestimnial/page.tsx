@@ -70,7 +70,7 @@ const Testimonial = () => {
             >
               <Image
                 src={card.image}
-                className="w-full h-full sm:h-full lg:h-full object-cover"
+                className="w-full  sm:h-68 lg:h-full object-cover"
                 alt="Chef Card"
                 height={900}
                 width={400}
