@@ -26,7 +26,7 @@ const Menu = () => {
     { id: 1, name: 'Alder Grilled Chinook Salmon', description: 'Toasted French bread topped with romano, cheddar', price: 12.99, calories: 560, category: 'Starter', image: '/44.png' },
     { id: 2, name: 'Berries and Creme Tart', description: 'Gorgonzola, ricotta, mozzarella, taleggio', price: 8.99, calories: 700, category: 'Starter', image: '/cream.jpg' },
     { id: 3, name: 'Optic Big Breakfast Combo', description: 'Toasted French bread topped with romano, cheddar', price: 18.99, calories: 560, category: 'Main', image: '/breakfast.jpg' },
-    { id: 4, name: 'Caffè macchiato', description: 'Espresso with a dollop of steamed milk', price: 4.50, calories: 100, category: 'Drinks', image: '/Caffe.jpg' },
+    { id: 4, name: 'Caffè macchiato', description: 'Espresso with a dollop of steamed milk', price: 4.50, calories: 100, category: 'Drinks', image: '/caffe.jpg' },
     { id: 5, name: 'Pain au chocolat', description: 'Delicious French chocolate croissant', price: 3.50, calories: 250, category: 'Dessert', image: '/pain.jpg' },
     { id: 6, name: 'Organic Green Salad', description: 'Fresh organic greens with a light dressing', price: 7.99, calories: 150, category: 'Starter', image: '/salad.jpg' },
     { id: 7, name: 'Seafood Pasta', description: 'Pasta with fresh seafood and garlic butter sauce', price: 15.99, calories: 800, category: 'Main', image: '/seafood.jpg' },

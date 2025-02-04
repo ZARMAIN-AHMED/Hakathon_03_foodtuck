@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Testimonial = () => {
   const cards = [
-    { image: "/Chef Card.png" },
+    { image: "/Chef card.png" },
     { image: "/Card 2.png" },
     { image: "/Card 3.png" },
     { image: "/Card 4.png" },
@@ -72,7 +72,7 @@ const Testimonial = () => {
 <Image
   src={card.image}
   alt="Chef Card"
-  className="object-cover w-full h-auto lg:h-full"
+ 
   height={900}
   width={400}
 />

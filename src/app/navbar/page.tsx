@@ -6,19 +6,24 @@ import { CiSearch } from "react-icons/ci";
 import { FiUser, FiShoppingCart } from "react-icons/fi";
 import { ChevronDownIcon, MenuIcon, XIcon } from "lucide-react";
 import client from "../../sanity/lib/Sanityclient"; // Import Sanity client
+import { SignedOut, SignInButton, SignedIn, UserButton } from "@clerk/nextjs";
 
 export default function Navbar() {
   const [searchValue, setSearchValue] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Update currentPath on the client side only
     if (typeof window !== "undefined") {
       setCurrentPath(window.location.pathname);
     }
+    setMounted(true);
   }, []);
+
+  if (!mounted) return null; 
 
   const handleSearch = async () => {
     if (!searchValue.trim()) return;
@@ -121,10 +126,12 @@ export default function Navbar() {
 
         {/* Icons */}
         <div className="flex space-x-6 text-white">
-          {/* User Icon */}
-          <Link href="/signin">
-            <FiUser className="w-6 h-6 cursor-pointer hover:text-orange-500" />
-          </Link>
+        <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
 
           {/* Shopping Cart */}
           <Link href="/cart" className="relative">

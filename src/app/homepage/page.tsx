@@ -4,12 +4,15 @@ import Hero from "../hero/page";
 
 import Testimonial from "../cheftestimnial/page";
 import Navbar from "../navbar/page";
+
+
 function Home() {
   return (
-    <div>
+    <div className="bg-black ">
       <Navbar />
       <Hero />
       <Testimonial />
+  
     </div>
   );
 }

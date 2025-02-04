@@ -1,4 +1,5 @@
 import { createClient } from '@sanity/client';
+import { client } from './client';
 
 const sanityClient = createClient({
   projectId: "0av6w099", // Replace with your Sanity project ID
@@ -8,3 +9,5 @@ const sanityClient = createClient({
 });
 
 export default sanityClient;
+
+

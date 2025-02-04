@@ -8,6 +8,8 @@ import { useState, useEffect } from "react";
 import { CiSearch } from "react-icons/ci";
 import { FiUser } from "react-icons/fi";
 import { ChevronDownIcon, } from "lucide-react";
+import { SignedOut, SignInButton, SignedIn, UserButton } from "@clerk/nextjs";
+import { client } from "@/sanity/lib/client";
 
  function Navbar() {
   const cart = useSelector((state: RootState) => state.cart);
@@ -16,14 +18,39 @@ import { ChevronDownIcon, } from "lucide-react";
 
   const [isOpen, setIsOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState<string>("");
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
 
-  // Set currentPath only on the client side
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setCurrentPath(window.location.pathname);
+
+  const [searchValue, setSearchValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleSearch = async () => {
+    if (!searchValue.trim()) return;
+    setLoading(true);
+
+    try {
+      const results = await client.fetch(
+        `*[_type == "product" && name match $name]{
+          _id,
+          name,
+          "image": image.asset->url,
+          price,
+          description,
+          category
+        }`,
+        { name: `${searchValue}*` } // Wildcard search for partial matches
+      );
+
+      setSearchResults(results);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      setLoading(false);
     }
-  }, []);
-
+  };
   const isActive = (path: string) => currentPath === path;
 
   return (
@@ -82,10 +109,22 @@ import { ChevronDownIcon, } from "lucide-react";
 
         {/* Icons */}
         <div className="flex space-x-6 text-white">
-        <CiSearch className="w-6 h-6 cursor-pointer hover:text-orange-500" />
-          <Link href="/sigin">
-            <FiUser className="w-6 h-6 cursor-pointer hover:text-orange-500" />
-          </Link>
+        <div className="relative">
+      {/* Search Icon */}
+      <CiSearch
+        className="w-6 h-6 cursor-pointer hover:text-orange-500"
+        onClick={() => setSearchOpen(!searchOpen)}
+      />
+
+      {/* Search Input Box */}
+    
+    </div>
+        <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           <div className="relative">
             <Link href="/cart">
               <FiShoppingCart className="w-6 h-6 cursor-pointer hover:text-orange-500" />
